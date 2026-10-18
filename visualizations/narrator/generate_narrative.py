@@ -46,7 +46,15 @@ def generate_scr_narrative_offline(findings: dict) -> dict:
         peak = findings["true_peak_month"]
         peak_month = peak["month"]
         peak_revenue = money(peak["revenue_inr"])
-        month_name = peak_month  # Preserve the verified YYYY-MM label.
+        
+    month_names = {
+    "01": "January", "02": "February", "03": "March",
+    "04": "April", "05": "May", "06": "June",
+    "07": "July", "08": "August", "09": "September",
+    "10": "October", "11": "November", "12": "December",
+}
+    
+month_name = month_names[peak_month.split("-")[1]]
 
         inflated = findings["outlier_inflated_month"]
         inflated_month = inflated["month"]
